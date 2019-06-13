@@ -38,12 +38,16 @@ DML操作表中的数据
             insert into 表名：表示要往哪张表里添加数据；
             （字段名1，字段名2...）:要给哪些字段设置值；
             values (值1，值2...）：设置具体的值；
-  1.1插入    全部字段：所有的字段名都写出来：insert into 表名 （字段名1，字段名2...） values (值1，值2...）;
+  1.1 插入    全部字段：所有的字段名都写出来：insert into 表名 （字段名1，字段名2...） values (值1，值2...）;
                      不写字段名：insert into 表名 values (值1，值2...）;
                      eg:insert into table student (id,name,age,sex) values (1,'甲',18,'男')；
                          (student一共有id,name,age,sex，addr五个字段)
                         插入所有列：insert into table student values (1,'甲',18,'男'，'家里')；
                         插入部分列：insert into table student (id,name) values (2,'乙');(插入部分列必须写列名)
+  1.2 查看mysql内部设置的编码:show variables like 'character%';
+  1.3 将表2中所有的的列复制到表一中:insert into  表1 select * from 表2；
+      将表2中部分列复制到表一中:insert into 表1 （列1，列2） select 列1，列2 from 表2 ；
+2.更新表记录            
                         
                      
                      
