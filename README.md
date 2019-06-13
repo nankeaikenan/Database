@@ -37,5 +37,37 @@ DML操作表中的数据
 1.插入记录：insert [into] 表名 [字段名] values (字段值)；
             insert into 表名：表示要往哪张表里添加数据；
             （字段名1，字段名2...）:要给哪些字段设置值；
-            values(值1，值2...）：设置具体的值；
-  1.1插入    全部字段：所有的字段名都写出来：insert into 表名 (
+            values (值1，值2...）：设置具体的值；
+  1.1插入    全部字段：所有的字段名都写出来：insert into 表名 （字段名1，字段名2...） values (值1，值2...）;
+                     不写字段名：insert into 表名 values (值1，值2...）;
+                     eg:insert into table student (id,name,age,sex) values (1,'甲',18,'男')；
+                         (student一共有id,name,age,sex，addr五个字段)
+                        插入所有列：insert into table student values (1,'甲',18,'男'，'家里')；
+                        插入部分列：insert into table student (id,name) values (2,'乙');(插入部分列必须写列名)
+                        
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                  
