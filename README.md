@@ -47,7 +47,7 @@ DML操作表中的数据
   1.2 查看mysql内部设置的编码:show variables like 'character%';
   1.3 将表2中所有的的列复制到表一中:insert into  表1 select * from 表2；
       将表2中部分列复制到表一中:insert into 表1 （列1，列2） select 列1，列2 from 表2 ；
-2.更新表记录            
+2.更新表记录：update 表名 set 列名=值 [where 条件表达式]        （可以同时更新一个或多个字段）       
                         
                      
                      
