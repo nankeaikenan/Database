@@ -59,6 +59,19 @@ DML操作表中的数据
               eg（查询student表中的name和age列）：select name,age from student;
   4.2 指定列的别名进行查询
         对列指定别名：select 字段1 AS 别名，字段2 AS 别名... from 表名；
+  4.3 去除重复值：select distinct 字段名 from 表名 ；   eg（查询学生来自于哪些地方）：select distinct address from student;
+  4.4 查询结果参与运算：eg（所有数学加5分）：select math+5 from student;
+5.条件查询：select 字段名 from 表名 where 条件；
+   5.1创建一个学生表，包含以下列：
+       CREATE TABLE student3 (
+           id int, -- 编号
+           name varchar(20), -- 姓名
+           age int, -- 年龄
+           sex varchar(5), -- 性别
+           address varchar(100), -- 地址
+           math int, -- 数学
+           english int -- 英语
+    );
 
             
                      
