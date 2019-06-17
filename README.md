@@ -105,7 +105,19 @@ DML操作表中的数据
           select * from student3 where name like '%马%'
         -- 查询姓马，且姓名有两个字的学生
           select * from student3 where name like '马_'
-         
+ 7 7.1 单列排序：只按某一字段进行排序:SELECT 字段名 FROM 表名 WHERE 字段=值 ORDER BY 字段名 [ASC|DESC];
+            ASC: 升序，默认值      DESC: 降序
+            -- 查询所有数据,使用年龄降序排序            
+                select * from student order by age desc;
+       组合排序：SELECT 字段名 FROM 表名 WHERE 字段=值 ORDER BY 字段名 1 [ASC|DESC], 字段名 2 [ASC|DESC];
+            同时对多个字段进行排序，如果第 1 个字段相等，则按第 2 个字段排序，依次类推。
+              -- 查询所有数据,在年龄降序排序的基础上，如果年龄相同再以数学成绩升序排序
+                select * from student3 order by age,
+   7.2 聚合函数：max(列名) 求这一列的最大值
+                min(列名) 求这一列的最小值
+                avg(列名) 求这一列的平均值
+                count(列名) 统计这一列有多少条记录
+                sum(列名) 对这一列求总和
            
   
                      
