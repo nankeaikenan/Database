@@ -72,8 +72,42 @@ DML操作表中的数据
            math int, -- 数学
            english int -- 英语
     );
-
-            
+    -- 查询 math 分数大于 80 分的学生
+      select * from student3 where math>80
+    -- 查询 english 分数小于或等于 80 分的学生
+      select * from student3 where english<=80
+    -- 查询 age 等于 20 岁的学生
+      select * from student3 where age=20
+    -- 查询 age 不等于 20 岁的学生，注：不等于有两种写法
+      select * from student3 where age!=20
+      select * from student3 where age<>20
+    -- 查询 age 大于 35 且性别为男的学生(两个条件同时满足)
+      select * from student3 where age>35 and sex='男';
+    -- 查询 age 大于 35 或性别为男的学生(两个条件其中一个满足)
+      select * from student3 where age>35 or sex='男';
+    -- 查询 id 是 1 或 3 或 5 的学生
+      select * from student3 where id=1 or id=3 or id=5;
+ 6  6.1in关键字：select 字段名 from 表名 where 字段 in(数据1，数据2...);
+              in里面每个数据都会作为一个条件，只要满足条件就会显示
+             eg（查询id是1,3,5的学生）：select * from student3 where id in(1,3,5);
+             eg（查询id不是1,3,5的学生）：select * from student3 where id not in(1,3,5);
+    6.2 范围查询：between 值1 AND 值2
+         表示值1到值2的范围，包头又包尾
+         --查询 english 成绩大于等于 75，且小于等于 90 的学生
+            select * from student3 where english between 75 and 90;
+    6.3 like关键字
+        like表示模糊查询：select * from 表名 where 字段名 like '通配符字符串'
+        通配符字符串：%  匹配任意多个字符串
+                    _  匹配一个字符
+        -- 查询姓马的学生
+          select * from student3 where name like '马%'；
+        -- 查询姓名中包含'德'字的学生
+          select * from student3 where name like '%马%'
+        -- 查询姓马，且姓名有两个字的学生
+          select * from student3 where name like '马_'
+         
+           
+  
                      
                      
                      
