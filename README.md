@@ -118,12 +118,56 @@ DML操作表中的数据
                 avg(列名) 求这一列的平均值
                 count(列名) 统计这一列有多少条记录
                 sum(列名) 对这一列求总和
-           
-  
-                     
-                     
-                     
-                     
+         eg:-- 查询年龄大于 20 的总数
+              select count (*) from student where age>20；*（为了后面不是斜体）
+            -- 查询数学成绩总分
+              select sum(math) from student;
+            -- 查询数学成绩平均分
+              select avg(math) from student;
+            -- 查询数学成绩最高分
+              select max(math) from student;
+            -- 查询数学成绩最低分
+              select min(math) from student;
+   7.3 分组（一般分组会跟聚合函数一起使用）：SELECT 字段 1,字段 2... FROM 表名 GROUP BY 分组字段 [HAVING 条件];        
+         eg1:--查询男女各多少人
+              1) 查询所有数据,按性别分组。
+              2) 统计每组人数 
+                  selecct sex,count(*) from student group by sex;*
+         eg2 --查询年龄大于 25 岁的人,按性别分组,统计每组的人数
+                1) 先过滤掉年龄小于 25 岁的人。
+                2) 再分组。
+                3) 最后统计每组的人数
+                  select sex,count(*) from student where age>25 group by sex;*
+         eg3 --查询年龄大于 25 岁的人，按性别分组，统计每组的人数，并只显示性别人数大于 2 的数据(对分组查询的结果再进行过滤)
+                select sex,count(*) from student where age>25 group by sex having count(*) >2;*
+        3.3.1 having 与 where 的区别
+                where子句 对查询结果进行分组前，将不符合 where 条件的行去掉，即在分组之前过滤数据，即先过滤
+                          再分组。where 后面不可以使用聚合函数
+                having子句的作用是筛选满足条件的组，即在分组之后过滤数据，即先分组再过滤。
+                          having 后面可以使用聚合函数        
+    7.4 limit语句：LIMIT offset,length; 
+                  offset：起始行数，从 0 开始计数，如果省略，默认就是 0 
+                  eg:-- 查询学生表中数据，从第 3 条开始显示，显示 6 条。
+                          select * from student limit 2,6;
+                  使用场景：
+                        分页：比如我们登录京东，淘宝，返回的商品信息可能有几万条，不是一次全部显示出来。是一页显示固定的
+                              条数。 假设我们每页显示 5 条记录的方式来分页。
+                                -- 如果第一个参数是 0 可以省略写：
+                                      select * from student3 limit 5;
+   7.5 数据库表的约束
+         约束种类：
+          约束名    约束关键字                      特点         
+          主键      primary key                   唯一、非空                                                     
+          唯一      unique      
+          非空      not null
+          外键      foreign key
+          检查约束   check 注：mysql 不支持
+      7.5.1 创建主键方式：
+            1. 在创建表的时候给字段添加主键:字段名 字段类 primary key
+            2. 在已有表中添加主键:ALTER TABLE 表名 add primary key
+      7.5.2 删除主键：alter table 表名 drop primary key
+      7.5.3 主键自增：AUTO_INCREMENT 表示自动增长(字段类型必须是整数类型)
+   
                      
                      
                      
