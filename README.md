@@ -167,13 +167,45 @@ DML操作表中的数据
             2. 在已有表中添加主键:ALTER TABLE 表名 add primary key
       7.5.2 删除主键：alter table 表名 drop primary key
       7.5.3 主键自增：AUTO_INCREMENT 表示自动增长(字段类型必须是整数类型)
-   
-                     
-                     
-                     
-                     
-                     
-                     
+            1.概念：如果某一列是数值类型的，使用 auto_increment 可以来完成值得自动增长
+            2.在创建表时，添加主键约束，并且完成主键自增长
+            create table stu(
+              id int primary key auto_increment,-- 给id添加主键约束
+              name varchar(20)
+            );
+            3. 删除自动增长：ALTER TABLE stu MODIFY id INT;
+			      4. 添加自动增长：ALTER TABLE stu MODIFY id INT AUTO_INCREMENT;   
+            5.创建表时指定起始值（默认为1）
+                CREATE TABLE 表名(
+                列名 int primary key AUTO_INCREMENT
+                ) AUTO_INCREMENT=起始值;
+            6.       
+      7.5.4 唯一约束：表中某一列不能出现重复的值
+            字段名 字段类型 UNIQUE
+      7.5.5 非空约束：某一列不能为 null。
+      7.5.6 默认值：
+            -- 创建一个学生表 st9，包含字段(id,name,address)， 地址默认值是广州
+                create table st9 (
+                 id int,
+                 name varchar(20),
+                 address varchar(20) default '广州'
+                )
+            -- 添加一条记录,使用默认地址
+                insert into st9 values (1, '李四', default);
+                  elect * from st9;
+   7.6 外键约束
+        1. 在创建表时，可以添加外键
+          * 语法：
+            create table 表名(
+              ....
+              外键列
+              constraint 外键名称 foreign key (外键列名称) references 主表名称(主表列名称)
+            );
+        2. 删除外键
+          ALTER TABLE 表名 DROP FOREIGN KEY 外键名称;
+        3. 创建表之后，添加外键
+          ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称);
+
                      
                      
                      
